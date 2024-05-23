@@ -1,4 +1,4 @@
-import { InputTestHarness } from "../../../utilities/InputTestHarness";
+import { BaseInputHarness } from "../../../utilities/InputTestHarness";
 import IUseInput from "../../interfaces/IUseInput";
 import { BaseInput } from "./BaseInput";
 import { Meta, StoryObj } from "@storybook/react";
@@ -6,14 +6,17 @@ import { Meta, StoryObj } from "@storybook/react";
 const input: IUseInput<string> = {
   value: "123",
   valid: true,
+  updateValue: () => {
+    return;
+  },
 };
 
 const meta: Meta<typeof BaseInput> = {
   component: BaseInput,
   render: () => (
-    <InputTestHarness id="123">
+    <BaseInputHarness id="123">
       <BaseInput id="123" input={input} />
-    </InputTestHarness>
+    </BaseInputHarness>
   ),
 };
 

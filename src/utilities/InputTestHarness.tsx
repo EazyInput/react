@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export const InputTestHarness: React.FC<InputTestHarnessProperties> = ({
+export const BaseInputHarness: React.FC<InputTestHarnessProperties> = ({
   children,
   id,
 }: InputTestHarnessProperties) => {
