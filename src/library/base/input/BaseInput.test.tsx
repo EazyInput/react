@@ -7,6 +7,7 @@ describe("baseInput", () => {
     const input: IUseInput<string> = {
       value: "123",
       valid: true,
+      updateValue: vi.fn(),
     };
 
     render(<BaseInput input={input} id="123" />);
@@ -18,6 +19,7 @@ describe("baseInput", () => {
     const input: IUseInput<string> = {
       value: "123",
       valid: true,
+      updateValue: vi.fn(),
     };
 
     const id = "455";
