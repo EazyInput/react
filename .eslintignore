@@ -1,0 +1,9 @@
+vite.config.ts
+vitest.config.ts
+cypress.config.ts
+coverage
+src/vite-env.d.ts
+src/setupTests.ts
+src/main.tsx
+cypress/support
+storybook-static

@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.json",
+  "include": ["./**/*", "../support/**/*"],
+  "compilerOptions": {
+    "isolatedModules": false,
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "types": ["cypress", "node", "@testing-library/cypress", "mocha"],
+    "strict": true,
+    "composite": true
+  }
+}

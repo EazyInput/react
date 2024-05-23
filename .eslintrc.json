@@ -1,9 +1,12 @@
 {
   "root": true,
   "env": { "browser": true, "es2020": true },
+  "parserOptions": {
+    "project": ["./tsconfig.json", "./cypress/tsconfig.json"]
+  },
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/strict-type-checked",
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended"
   ],
