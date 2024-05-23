@@ -1,6 +1,9 @@
 {
   "root": true,
-  "env": { "browser": true, "es2020": true },
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
   "parserOptions": {
     "project": ["./tsconfig.json", "./cypress/tsconfig.json"]
   },
@@ -8,6 +11,7 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/strict-type-checked",
     "plugin:react-hooks/recommended",
+    "plugin:storybook/recommended",
     "plugin:prettier/recommended"
   ],
   "ignorePatterns": ["dist", ".eslintrc.cjs"],
@@ -16,7 +20,9 @@
   "rules": {
     "react-refresh/only-export-components": [
       "warn",
-      { "allowConstantExport": true }
+      {
+        "allowConstantExport": true
+      }
     ]
   }
 }
