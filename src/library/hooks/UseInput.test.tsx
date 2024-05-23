@@ -18,7 +18,7 @@ describe("useInput", () => {
     expect(result.current.valid).toBeFalse();
   });
 
-  it("should convert event correctly", async () => {
+  it("should convert event value correctly", async () => {
     const user = userEvent.setup();
 
     render(<UseInputHarness />);
@@ -32,5 +32,9 @@ describe("useInput", () => {
     const element = await screen.findByLabelText("label");
 
     expect(element).toHaveValue(toType);
+  });
+
+  it("should convert event validity correctly", async () => {
+    //TODO: Figure out how to test these hooks.
   });
 });
