@@ -1,4 +1,4 @@
-import IUseInput from "../interfaces/IUseInput";
+import IUseInput from "../../interfaces/IUseInput";
 import { BaseInput } from "./BaseInput";
 import { render, screen } from "@testing-library/react";
 

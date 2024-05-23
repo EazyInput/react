@@ -1,5 +1,5 @@
-import { InputTestHarness } from "../../utilities/InputTestHarness";
-import IUseInput from "../interfaces/IUseInput";
+import { InputTestHarness } from "../../../utilities/InputTestHarness";
+import IUseInput from "../../interfaces/IUseInput";
 import { BaseInput } from "./BaseInput";
 import { Meta, StoryObj } from "@storybook/react";
 

@@ -1,5 +1,5 @@
-import IUseInput from "../interfaces/IUseInput";
-import { InputType } from "../interfaces/InputType";
+import IUseInput from "../../interfaces/IUseInput";
+import { InputType } from "../../interfaces/InputType";
 
 export const BaseInput: React.FC<BaseInputProperties> = ({
   id,
