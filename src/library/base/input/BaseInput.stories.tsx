@@ -6,9 +6,7 @@ import { Meta, StoryObj } from "@storybook/react";
 const input: IUseInput<string> = {
   value: "123",
   valid: true,
-  updateValue: () => {
-    return;
-  },
+  updateValue: vi.fn(),
 };
 
 const meta: Meta<typeof BaseInput> = {
