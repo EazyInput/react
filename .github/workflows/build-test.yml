@@ -1,0 +1,107 @@
+name: Build & Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    name: Build & Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+          cache: "npm"
+
+      - name: Restore Dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Lint Styles
+        run: npm run lint:styles
+
+      - name: Run Unit Tests
+        run: npm run test:unit
+
+      - name: Build Projects
+        run: npm run build
+
+  integration:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        browser: [edge, chrome, firefox]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+          cache: "npm"
+
+      - name: Restore Dependencies
+        run: npm ci
+
+      - name: Lint E2E
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Update Browsers
+        run: npx update-browserslist-db@latest
+
+      - name: Run Integration Tests
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm run preview
+          browser: ${{ matrix.browser }}
+          wait-on: http://localhost:4173
+
+  storybook:
+    name: Prepare Storybook
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+          cache: "npm"
+
+      - name: Restore Dependencies
+        run: npm ci
+
+      - name: Lint E2E
+        run: npm run lint
+
+      - name: Install PlayWright
+        run: npx playwright install
+
+      - name: Install Serve
+        run: npm install --global serve
+
+      - name: Build Storybook
+        run: npm run build-storybook
+
+      - name: Serve Storybook & Run Tests
+        run: |
+          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+            "serve storybook-static -l 3000" \
+            "npx wait-on tcp:3000 && npm run test-storybook -- --browsers firefox chromium --url http://localhost:3000"

@@ -17,5 +17,5 @@ export default mergeConfig(
       root: "src",
       setupFiles: ["setupTests.ts"],
     },
-  })
+  }),
 );
