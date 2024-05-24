@@ -19,5 +19,6 @@ describe("baseInput", () => {
     expect(element).toHaveValue(input.value);
     expect(element).toHaveAttribute("id", id);
     expect(element).not.toBeRequired();
+    expect(element).toHaveAttribute("aria-labelledby", id);
   });
 });
