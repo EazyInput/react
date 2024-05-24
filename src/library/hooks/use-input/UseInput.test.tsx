@@ -9,7 +9,7 @@ describe("useInput", () => {
 
     const { result } = renderHook(() => useInput(value, (x) => x));
 
-    expect(result.current.value).toEqual(value);
+    expect(result.current.value).toStrictEqual(value);
   });
 
   it("has correct default valid", () => {
@@ -19,6 +19,8 @@ describe("useInput", () => {
   });
 
   it("should convert event value correctly", async () => {
+    expect.assertions(1);
+
     const user = userEvent.setup();
 
     render(<UseInputFixture />);
@@ -35,6 +37,8 @@ describe("useInput", () => {
   });
 
   it("should convert event validity correctly", async () => {
+    expect.assertions(1);
+
     const user = userEvent.setup();
 
     render(<UseInputFixture required />);

@@ -5,6 +5,6 @@ describe("useTextInput", () => {
   it("has correct defaults", () => {
     const { result } = renderHook(() => useTextInput());
 
-    expect(result.current.value).toEqual("");
+    expect(result.current.value).toBe("");
   });
 });

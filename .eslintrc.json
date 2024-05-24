@@ -11,6 +11,14 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/strict-type-checked",
     "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:compat/recommended",
+    "plugin:vitest/legacy-all",
+    "plugin:jest-extended/all",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended",
+    "plugin:cypress/recommended",
+    "plugin:jest-formatting/strict",
     "plugin:storybook/recommended",
     "plugin:prettier/recommended"
   ],
@@ -23,6 +31,10 @@
       {
         "allowConstantExport": true
       }
+    ],
+    "vitest/prefer-expect-assertions": [
+      2,
+      { "onlyFunctionsWithAsyncKeyword": true }
     ]
   }
 }
