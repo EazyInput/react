@@ -1,5 +1,5 @@
 import { useState } from "react";
-import IUseInput from "../interfaces/IUseInput";
+import IUseInput from "../../interfaces/IUseInput";
 
 export default function useInput<T>(
   defaultValue: T,

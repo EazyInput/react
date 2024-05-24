@@ -1,5 +1,5 @@
 import IUseInput from "../../interfaces/IUseInput";
-import { BaseInput } from "./BaseInput";
+import { EazyInput } from "./EazyInput";
 import { render, screen } from "@testing-library/react";
 
 describe("baseInput", () => {
@@ -12,9 +12,12 @@ describe("baseInput", () => {
 
     const id = "123";
 
-    render(<BaseInput input={input} id={id} />);
+    render(<EazyInput input={input} id={id} />);
 
-    expect(screen.getByRole("textbox")).toHaveValue(input.value);
-    expect(screen.getByRole("textbox")).toHaveAttribute("id", id);
+    const element = screen.getByRole("textbox");
+
+    expect(element).toHaveValue(input.value);
+    expect(element).toHaveAttribute("id", id);
+    expect(element).not.toBeRequired();
   });
 });

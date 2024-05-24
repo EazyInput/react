@@ -1,9 +1,9 @@
-import useInput from "../library/hooks/UseInput";
+import useInput from "./UseInput";
 
-export const UseInputHarness: React.FC<UseInputHarnessProperties> = ({
+export const UseInputFixture: React.FC<UseInputFixtureProperties> = ({
   required,
-}: UseInputHarnessProperties) => {
-  const input = useInput<string>("", (x) => x);
+}: UseInputFixtureProperties) => {
+  const input = useInput<string>("", (value) => value);
 
   return (
     <div>
@@ -20,6 +20,6 @@ export const UseInputHarness: React.FC<UseInputHarnessProperties> = ({
   );
 };
 
-interface UseInputHarnessProperties {
+interface UseInputFixtureProperties {
   required?: boolean;
 }

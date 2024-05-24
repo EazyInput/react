@@ -1,7 +1,7 @@
 import { render, renderHook, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import useInput from "./UseInput";
-import { UseInputHarness } from "../../utilities/UseInputTestHarness";
+import { UseInputFixture } from "./UseInput.fixture";
 
 describe("useInput", () => {
   it("has correct default value", () => {
@@ -21,7 +21,7 @@ describe("useInput", () => {
   it("should convert event value correctly", async () => {
     const user = userEvent.setup();
 
-    render(<UseInputHarness />);
+    render(<UseInputFixture />);
 
     await user.click(await screen.findByLabelText("label"));
 
@@ -35,6 +35,16 @@ describe("useInput", () => {
   });
 
   it("should convert event validity correctly", async () => {
-    //TODO: Figure out how to test these hooks.
+    const user = userEvent.setup();
+
+    render(<UseInputFixture required />);
+
+    await user.click(await screen.findByLabelText("label"));
+
+    await user.keyboard("123");
+
+    const element = await screen.findByLabelText("label");
+
+    expect(element).toBeValid();
   });
 });

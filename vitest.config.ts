@@ -10,8 +10,8 @@ export default mergeConfig(
         exclude: [
           "main.tsx",
           "**/**.stories.*",
-          "**/utilities/**",
           "**/index.ts",
+          "**/**.fixture.*",
         ],
         thresholds: {
           branches: 100,
