@@ -1,15 +1,31 @@
+import IUseInput from "../../interfaces/IUseInput";
+import { InputType } from "../../interfaces/InputType";
+
 /**
  * Defines a feedback message for validation purposes.
  */
 export const EazyFeedback: React.FC<EazyFeedbackProperties> = ({
+  errorStyle,
+  input,
   staticStyle,
   validMessage,
+  validStyle,
 }: EazyFeedbackProperties) => {
   const determineStyle = (): string => {
-    return staticStyle ?? "";
+    if (!input.dirty) {
+      return staticStyle ?? "";
+    }
+    if (input.valid) {
+      return `${staticStyle ?? ""} ${validStyle ?? ""}`;
+    }
+    return `${staticStyle ?? ""} ${errorStyle ?? ""}`;
   };
 
   const determineMessage = (): string => {
+    if (!input.dirty) {
+      return "placeholder";
+    }
+
     return validMessage ?? "Input is valid.";
   };
 
@@ -17,6 +33,16 @@ export const EazyFeedback: React.FC<EazyFeedbackProperties> = ({
 };
 
 interface EazyFeedbackProperties {
+  /**
+   * The style class that should be applied when the corresponding input is invalid.s
+   */
+  errorStyle?: string;
+
+  /**
+   * The input hook for the corresponding input.
+   */
+  input: IUseInput<InputType>;
+
   /**
    * The static styling for the message that is always applied.
    */
@@ -26,4 +52,9 @@ interface EazyFeedbackProperties {
    * The content to display when the input is valid.
    */
   validMessage?: string;
+
+  /**
+   * The style class that should be applied when the corresponding input is valid.
+   */
+  validStyle?: string;
 }

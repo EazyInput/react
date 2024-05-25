@@ -16,6 +16,8 @@ export const UseInputFixture: React.FC<UseInputFixtureProperties> = ({
           required={required}
         ></input>
       </label>
+      <p>Is Dirty {input.dirty ? "yes" : "no"}</p>
+      <p>Is Error {input.error === "" ? "no" : "yes"}</p>
     </div>
   );
 };
