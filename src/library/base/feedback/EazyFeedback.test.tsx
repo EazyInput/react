@@ -1,49 +1,26 @@
 import { render, screen } from "@testing-library/react";
 import { EazyFeedback } from "./EazyFeedback";
-import IUseInput from "../../interfaces/IUseInput";
+import { defaultTextInput } from "../../utilities/DefaultInputs";
 
 describe("eazyFeedback", () => {
   it("not dirty, no static style, is correct", () => {
-    const input: IUseInput<string> = {
-      dirty: false,
-      value: "",
-      valid: false,
-      updateValue: () => {
-        return;
-      },
-    };
+    render(<EazyFeedback input={defaultTextInput} />);
 
-    render(<EazyFeedback input={input} />);
-
-    expect(screen.getByText("placeholder")).not.toHaveClass();
+    expect(screen.getByText("placeholder")).toHaveClass("eazy-not-visible");
   });
 
   it("not dirty, static style is correct", () => {
-    const input: IUseInput<string> = {
-      dirty: false,
-      value: "",
-      valid: false,
-      updateValue: () => {
-        return;
-      },
-    };
-
     const style = "my-style";
 
-    render(<EazyFeedback input={input} staticStyle={style} />);
+    render(<EazyFeedback input={defaultTextInput} staticStyle={style} />);
 
     expect(screen.getByText(/placeholder/i)).toHaveClass(style);
   });
 
   it("dirty and valid, no styling, is correct", () => {
-    const input: IUseInput<string> = {
-      dirty: true,
-      value: "",
-      valid: true,
-      updateValue: () => {
-        return;
-      },
-    };
+    const input = defaultTextInput;
+    input.dirty = true;
+    input.valid = true;
 
     render(<EazyFeedback input={input} />);
 
@@ -51,14 +28,9 @@ describe("eazyFeedback", () => {
   });
 
   it("dirty and valid, with styling, is correct", () => {
-    const input: IUseInput<string> = {
-      dirty: true,
-      value: "",
-      valid: true,
-      updateValue: () => {
-        return;
-      },
-    };
+    const input = defaultTextInput;
+    input.dirty = true;
+    input.valid = true;
 
     const staticStyle = "static-style";
     const validStyle = "valid-style";
@@ -78,29 +50,21 @@ describe("eazyFeedback", () => {
   });
 
   it("dirty and in-valid, no styling, is correct", () => {
-    const input: IUseInput<string> = {
-      dirty: true,
-      value: "",
-      valid: false,
-      updateValue: () => {
-        return;
-      },
-    };
+    const input = defaultTextInput;
+    input.dirty = true;
+    input.valid = false;
+    input.error = "invalid";
 
     render(<EazyFeedback input={input} />);
 
-    expect(screen.getByText(/input is valid/i)).not.toHaveClass();
+    expect(screen.getByText(input.error)).not.toHaveClass();
   });
 
-  it("dirty and in-valid, with styling, is correct", () => {
-    const input: IUseInput<string> = {
-      dirty: true,
-      value: "",
-      valid: false,
-      updateValue: () => {
-        return;
-      },
-    };
+  it("dirty and inValid, with styling, is correct", () => {
+    const input = defaultTextInput;
+    input.error = "invalid";
+    input.dirty = true;
+    input.valid = false;
 
     const staticStyle = "static-style";
     const errorStyle = "error-style";
@@ -113,9 +77,8 @@ describe("eazyFeedback", () => {
       />,
     );
 
-    const element = screen.getByText(/input is valid/i);
+    const element = screen.getByText(input.error);
 
-    expect(element).toHaveClass(staticStyle);
-    expect(element).toHaveClass(errorStyle);
+    expect(element).toHaveClass(staticStyle, errorStyle);
   });
 });

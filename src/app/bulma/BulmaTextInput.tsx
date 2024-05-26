@@ -9,9 +9,11 @@ export const BulmaTextInput: React.FC = () => {
     <EazyTextTemplate
       innerStyle="control"
       input={input}
+      labelContent="Text Input"
+      labelStyle="label"
       outerStyle="field"
       placeholder="Bulma Text Input"
-      labelContent="Text Input"
+      staticStyle="input"
     />
   );
 };

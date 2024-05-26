@@ -1,5 +1,6 @@
 import IUseInput from "../../interfaces/IUseInput";
 import { InputType } from "../../interfaces/InputType";
+import "./EazyFeedback.style.css";
 
 /**
  * Defines a feedback message for validation purposes.
@@ -13,7 +14,7 @@ export const EazyFeedback: React.FC<EazyFeedbackProperties> = ({
 }: EazyFeedbackProperties) => {
   const determineStyle = (): string => {
     if (!input.dirty) {
-      return staticStyle ?? "";
+      return `eazy-not-visible ${staticStyle ?? ""}`;
     }
     if (input.valid) {
       return `${staticStyle ?? ""} ${validStyle ?? ""}`;
@@ -25,7 +26,9 @@ export const EazyFeedback: React.FC<EazyFeedbackProperties> = ({
     if (!input.dirty) {
       return "placeholder";
     }
-
+    if (!input.valid) {
+      return input.error;
+    }
     return validMessage ?? "Input is valid.";
   };
 
