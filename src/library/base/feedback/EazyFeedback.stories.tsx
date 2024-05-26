@@ -8,4 +8,16 @@ const meta: Meta<typeof EazyFeedback> = {
 
 export default meta;
 
-export const Primary: StoryObj<typeof meta> = {};
+export const Primary: StoryObj<typeof meta> = {
+  args: {
+    input: {
+      valid: true,
+      error: "",
+      dirty: true,
+      value: "",
+      updateValue: () => {
+        return;
+      },
+    },
+  },
+};

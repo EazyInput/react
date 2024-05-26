@@ -6,6 +6,7 @@ describe("eazyFeedback", () => {
   it("not dirty, no static style, is correct", () => {
     const input: IUseInput<string> = {
       dirty: false,
+      error: "",
       value: "",
       valid: false,
       updateValue: () => {
@@ -15,12 +16,13 @@ describe("eazyFeedback", () => {
 
     render(<EazyFeedback input={input} />);
 
-    expect(screen.getByText("placeholder")).not.toHaveClass();
+    expect(screen.getByText("placeholder")).toHaveClass("eazy-not-visible");
   });
 
   it("not dirty, static style is correct", () => {
     const input: IUseInput<string> = {
       dirty: false,
+      error: "",
       value: "",
       valid: false,
       updateValue: () => {
@@ -38,6 +40,7 @@ describe("eazyFeedback", () => {
   it("dirty and valid, no styling, is correct", () => {
     const input: IUseInput<string> = {
       dirty: true,
+      error: "",
       value: "",
       valid: true,
       updateValue: () => {
@@ -53,6 +56,7 @@ describe("eazyFeedback", () => {
   it("dirty and valid, with styling, is correct", () => {
     const input: IUseInput<string> = {
       dirty: true,
+      error: "",
       value: "",
       valid: true,
       updateValue: () => {
@@ -80,6 +84,7 @@ describe("eazyFeedback", () => {
   it("dirty and in-valid, no styling, is correct", () => {
     const input: IUseInput<string> = {
       dirty: true,
+      error: "error",
       value: "",
       valid: false,
       updateValue: () => {
@@ -89,12 +94,13 @@ describe("eazyFeedback", () => {
 
     render(<EazyFeedback input={input} />);
 
-    expect(screen.getByText(/input is valid/i)).not.toHaveClass();
+    expect(screen.getByText(/error/i)).not.toHaveClass();
   });
 
   it("dirty and in-valid, with styling, is correct", () => {
     const input: IUseInput<string> = {
       dirty: true,
+      error: "error",
       value: "",
       valid: false,
       updateValue: () => {
@@ -113,7 +119,7 @@ describe("eazyFeedback", () => {
       />,
     );
 
-    const element = screen.getByText(/input is valid/i);
+    const element = screen.getByText(/error/i);
 
     expect(element).toHaveClass(staticStyle);
     expect(element).toHaveClass(errorStyle);
