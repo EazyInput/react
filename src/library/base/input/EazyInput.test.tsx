@@ -8,11 +8,14 @@ describe("baseInput", () => {
       value: "123",
       valid: true,
       updateValue: vi.fn(),
+      dirty: true,
+      error: "",
     };
 
     const id = "123";
+    const placeholder = "placeholder";
 
-    render(<EazyInput input={input} id={id} />);
+    render(<EazyInput input={input} id={id} placeholder={placeholder} />);
 
     const element = screen.getByRole("textbox");
 
@@ -20,5 +23,24 @@ describe("baseInput", () => {
     expect(element).toHaveAttribute("id", id);
     expect(element).not.toBeRequired();
     expect(element).toHaveAttribute("aria-labelledby", id);
+  });
+
+  it("has correct placeholder", () => {
+    const input: IUseInput<string> = {
+      value: "",
+      valid: true,
+      updateValue: vi.fn(),
+      dirty: true,
+      error: "",
+    };
+
+    const id = "123";
+    const placeholder = "placeholder";
+
+    render(<EazyInput input={input} id={id} placeholder={placeholder} />);
+
+    const element = screen.getByPlaceholderText(placeholder);
+
+    expect(element).toBeInTheDocument();
   });
 });

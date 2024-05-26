@@ -7,13 +7,17 @@ import { InputType } from "../../interfaces/InputType";
 export const EazyInput: React.FC<EazyInputProperties> = ({
   id,
   input,
+  placeholder,
   required,
+  title,
 }: EazyInputProperties) => {
   return (
     <input
       aria-labelledby={id}
       id={id}
+      placeholder={placeholder}
       required={required}
+      title={title}
       value={input.value}
     />
   );
@@ -31,7 +35,17 @@ interface EazyInputProperties {
   input: IUseInput<InputType>;
 
   /**
+   * A placeholder for the input value until one is specified.
+   */
+  placeholder: string;
+
+  /**
    * A value indicating whether the field is required.
    */
   required?: boolean;
+
+  /**
+   * A helpful tooltip for the user when the mouse hovers over the input.
+   */
+  title?: string;
 }
