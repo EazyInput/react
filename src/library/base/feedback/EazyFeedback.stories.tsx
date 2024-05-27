@@ -15,7 +15,7 @@ export const Primary: StoryObj<typeof meta> = {
       dirty: true,
       error: "",
       value: "",
-      updateValue: () => {
+      handleChange: () => {
         return;
       },
     },

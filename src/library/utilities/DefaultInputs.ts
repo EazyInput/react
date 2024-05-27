@@ -5,7 +5,7 @@ export const defaultTextInput: IUseInput<string> = {
   value: "",
   dirty: false,
   valid: false,
-  updateValue: () => {
+  handleChange: () => {
     return;
   },
 };

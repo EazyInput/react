@@ -10,12 +10,24 @@ export default function useInput<T>(
   const [valid, setValid] = useState<boolean>(false);
   const [value, setValue] = useState<T>(defaultValue);
 
-  const updateValue = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setDirty(true);
-    setError(event.target.validationMessage);
-    setValid(event.target.validity.valid);
-    setValue(conversionFunc(event.target.value));
+  const handleFocus = (event: React.FocusEvent<HTMLInputElement>): void => {
+    setValues(event.target);
   };
 
-  return { dirty, error, updateValue, valid, value };
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setValues(event.target);
+  };
+
+  const handleInput = (event: React.FormEvent<HTMLInputElement>): void => {
+    setValues(event.target as HTMLInputElement);
+  };
+
+  const setValues = (target: EventTarget & HTMLInputElement): void => {
+    setDirty(true);
+    setError(target.validationMessage);
+    setValid(target.validity.valid);
+    setValue(conversionFunc(target.value));
+  };
+
+  return { dirty, error, handleChange, handleFocus, handleInput, valid, value };
 }

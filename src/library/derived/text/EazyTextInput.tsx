@@ -1,5 +1,5 @@
-import { EazyInput } from "../base";
-import IUseInput from "../interfaces/IUseInput";
+import { EazyInput } from "../../base";
+import IUseInput from "../../interfaces/IUseInput";
 
 export const EazyTextInput: React.FC<EazyTextInputProperties> = ({
   id,
