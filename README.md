@@ -14,3 +14,4 @@ EazyInput's purpose is to simplify the frustration around inputs.
 
 - autofocus is not allowed due to accessibility rules
 - "dirname" is a flag that is turned on or off and depends on the name being provided
+- popOverTarget & popOverTargetAction is not available

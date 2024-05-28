@@ -11,4 +11,14 @@ export default interface EazyImageInputProperties
    * Specifies the height of an image input.
    */
   height?: string;
+
+  /**
+   * The source URL for an image input.
+   */
+  src?: string;
+
+  /**
+   * Specifies the width of an image input.
+   */
+  width?: string;
 }
