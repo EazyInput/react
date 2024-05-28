@@ -18,6 +18,12 @@ export const Primary: StoryObj<typeof meta> = {
       handleChange: () => {
         return;
       },
+      handleFocus: () => {
+        return;
+      },
+      handleInput: () => {
+        return;
+      },
     },
   },
 };
