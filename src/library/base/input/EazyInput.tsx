@@ -29,6 +29,7 @@ export const EazyInput: React.FC<EazyInputProperties> = ({
   input,
   list,
   max,
+  maxlength,
   name,
   placeholder,
   required,
@@ -72,6 +73,7 @@ export const EazyInput: React.FC<EazyInputProperties> = ({
       id={id}
       list={list}
       max={calculateMax()}
+      maxLength={maxlength}
       name={name}
       onChange={input.handleChange}
       onFocus={input.handleFocus}
@@ -137,6 +139,11 @@ interface EazyInputProperties
    * Specifies the maximum value for an input in via a number or date type.
    */
   max?: number | Date;
+
+  /**
+   * Defines the limit of the character count.
+   */
+  maxlength?: number;
 
   /**
    * Denotes the name of the input.
