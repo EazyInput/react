@@ -12,6 +12,7 @@ export default mergeConfig(
           "**/**.stories.*",
           "**/index.ts",
           "**/**.fixture.*",
+          "**/utilities/**",
         ],
         thresholds: {
           branches: 100,

@@ -1,5 +1,11 @@
+import { BulmaTextInput } from "./bulma/BulmaTextInput";
+
 const App: React.FC = () => {
-  return <div></div>;
+  return (
+    <div>
+      <BulmaTextInput />
+    </div>
+  );
 };
 
 export default App;

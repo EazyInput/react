@@ -26,8 +26,10 @@ export const EazyFeedback: React.FC<EazyFeedbackProperties> = ({
     if (!input.dirty) {
       return "placeholder";
     }
-
-    return input.valid ? validMessage ?? "Input is valid." : input.error;
+    if (!input.valid) {
+      return input.error;
+    }
+    return validMessage ?? "Input is valid.";
   };
 
   return <p className={determineStyle()}>{determineMessage()}</p>;

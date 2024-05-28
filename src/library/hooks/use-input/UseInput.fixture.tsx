@@ -12,7 +12,7 @@ export const UseInputFixture: React.FC<UseInputFixtureProperties> = ({
         <input
           id="input"
           value={input.value}
-          onChange={input.updateValue}
+          onChange={input.handleChange}
           required={required}
         ></input>
       </label>

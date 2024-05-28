@@ -12,10 +12,16 @@ export const Primary: StoryObj<typeof meta> = {
   args: {
     input: {
       valid: true,
-      error: "",
       dirty: true,
+      error: "",
       value: "",
-      updateValue: () => {
+      handleChange: () => {
+        return;
+      },
+      handleFocus: () => {
+        return;
+      },
+      handleInput: () => {
         return;
       },
     },
